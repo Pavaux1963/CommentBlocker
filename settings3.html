@@ -1,0 +1,292 @@
+<html>
+
+<head>
+    <title>Simple Vertical Tab Navigation</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: f3f3f3;
+        }
+        #main_container {
+            padding: 20px;
+            width: 1600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            background-color: #ffe5b9;
+            padding: 6px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #title {
+            font-size: 32px;
+            margin-left: 10px;
+        }
+
+        /*---------- vertical tab nav */
+        #vertical_tab_nav {
+            display: block;
+            width: 100%;
+        }
+
+        #vertical_tab_nav ul {
+            display: block;
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            overflow: hidden;
+            width: 20%;
+            border-radius: 10px 0 0 10px;
+            background: #555;
+        }
+
+        #vertical_tab_nav li {
+            border-bottom: 1px solid #000;
+            margin-bottom: 1px;
+            text-align: left;
+            padding: 0px;
+        }
+
+        #vertical_tab_nav li:last-child {
+            margin-bottom: 0px;
+            border-bottom: 0px;
+        }
+
+        #vertical_tab_nav li a {
+            display: block;
+            font-size: 14pt;
+            color: #fff;
+            text-decoration: none;
+            padding: 7%;
+            background: #57cac9;
+            background: -webkit-linear-gradient(top, #444, #333);
+            background: -moz-linear-gradient(top, #444, #333);
+        }
+
+        #vertical_tab_nav li a.selected {
+            background: #fff;
+            color: #000;
+            border: 1px solid #cdcdcd;
+            border-right: none;
+            position: relative;
+        }
+
+        #vertical_tab_nav div {
+            display: block;
+            float: left;
+            background: #fff;
+            background: #fff;
+            width: 64%;
+            min-height: 500px;
+            padding: 10px 3% 3% 3%;
+            border: 1px solid #cdcdcd;
+            border-radius: 0 10px 10px 10px;
+            margin-left: -1px;
+        }
+
+        #vertical_tab_nav div article {
+            display: none;
+            margin: 0px;
+        }
+
+        #vertical_tab_nav div article p {
+            margin: 0px 0px 20px 0px;
+        }
+
+        .listbox {
+            width: 400px;
+        }
+
+        .add_item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .list_input {
+            margin: 0px;
+            width: 100%;
+            font-size: 24px;
+        }
+
+        .btn-square-so-pop {
+            position: relative;
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            text-decoration: none;
+            color: #FFF;
+            background: #fd9535;
+            border-radius: 4px;
+            box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+            border: solid 2px #d27d00;
+        }
+
+        .btn-square-so-pop:active {
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+        }
+
+        .item_list {
+            margin: -1px 0px 0px 0px;
+            padding: 0px;
+            list-style: none;
+            max-height: 500px;
+            min-height: 500px;
+            overflow-y: scroll;
+            border: 1px solid black;
+        }
+
+        .item {
+            margin: 0px;
+            height: 40px;
+            border: 1px solid black;
+            border-top: none;
+            border-left: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .icons {
+            margin: 0 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .user_icon {
+            margin: 3px;
+        }
+
+        .remove {
+            margin: 4px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            //----------Select the first tab and div by default
+
+            $('#vertical_tab_nav > ul > li > a').eq(0).addClass("selected");
+            $('#vertical_tab_nav > div > article').eq(0).css('display', 'block');
+
+
+            //---------- This assigns an onclick event to each tab link("a" tag) and passes a parameter to the showHideTab() function
+
+            $('#vertical_tab_nav > ul').click(function (e) {
+
+                if ($(e.target).is("a")) {
+
+                    /*Handle Tab Nav*/
+                    $('#vertical_tab_nav > ul > li > a').removeClass("selected");
+                    $(e.target).addClass("selected");
+
+                    /*Handles Tab Content*/
+                    var clicked_index = $("a", this).index(e.target);
+                    $('#vertical_tab_nav > div > article').css('display', 'none');
+                    $('#vertical_tab_nav > div > article').eq(clicked_index).fadeIn();
+
+                }
+
+                $(this).blur();
+                return false;
+
+            });
+
+
+        });//end ready
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="icon48.png" />
+        <span id="title">Comment Blocker</span>
+    </header>
+    <div id="main_container">
+        <section id="vertical_tab_nav">
+
+            <ul>
+                <li><a href="index.html">ブロック設定</a></li>
+                <li><a href="index.html">その他</a></li>
+                <li><a href="index.html">支援する</a></li>
+                <li><a href="index.html">バージョン情報</a></li>
+            </ul>
+
+            <div>
+                <article>
+                    <h2>ブロック設定</h2>
+                    <p>ブロックするコメントを設定します</p>
+                    
+                </article>
+
+                <article>
+                    <h2>Tab Content Two</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+
+                <article>
+                    <h2>Tab Content Three</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+
+                <article>
+                    <h2>Tab Content Four</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+
+            </div>
+        </section>
+    </div>
+
+
+</body>
+
+</html>

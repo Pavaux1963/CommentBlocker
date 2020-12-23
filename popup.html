@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>popup</title>
+    <style>
+        body {
+            width: 400px;
+            margin: 0px;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #e8e8e8;
+            padding: 6px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        #enable {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ee6f57;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .switch__label {
+            width: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .switch__content {
+            display: block;
+            cursor: pointer;
+            position: relative;
+            border-radius: 30px;
+            height: 31px;
+            overflow: hidden;
+        }
+        
+        .switch__content:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: calc(100% - 3px);
+            height: calc(100% - 3px);
+            top: 0;
+            left: 0;
+            border: 1.5px solid #E5E5EA;
+            border-radius: 30px;
+            background-color: #fff;
+        }
+        
+        .switch__content:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background-color: transparent;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            border-radius: 30px;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        
+        .switch__input {
+            display: none;
+        }
+        
+        .switch__circle {
+            display: block;
+            top: 2px;
+            left: 2px;
+            position: absolute;
+            -webkit-box-shadow: 0 2px 6px #999;
+            box-shadow: 0 2px 6px #999;
+            width: 27px;
+            height: 27px;
+            -webkit-border-radius: 20px;
+            border-radius: 20px;
+            background-color: #fff;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        
+        .switch__input:checked~.switch__circle {
+            left: 21px;
+        }
+        
+        .switch__input:checked~.switch__content:after {
+            background-color: #00c4cc;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .switch2__label {
+            width: 44px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .switch2__content {
+            display: block;
+            cursor: pointer;
+            position: relative;
+            border-radius: 30px;
+            height: 20px;
+            -webkit-transition: all .1s .4s;
+            -moz-transition: all .1s .4s;
+            -ms-transition: all .1s .4s;
+            -o-transition: all .1s .4s;
+            transition: all .1s .4s;
+            overflow: hidden;
+        }
+        
+        .switch2__content:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            top: 0;
+            left: 0;
+            border: 1.5px solid #000000;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+        
+        .switch2__content:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background-color: transparent;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        
+        .switch2__input {
+            display: none;
+        }
+        
+        .switch2__circle {
+            display: block;
+            top: 5px;
+            left: 5px;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background-color: #000000;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        
+        .switch2__input:checked~.switch2__circle {
+            left: 29px;
+            background-color: #fff;
+        }
+        
+        .switch2__input:checked~.switch2__content {
+            border-color: transparent;
+            -webkit-transition: all 0s;
+            -moz-transition: all 0s;
+            -ms-transition: all 0s;
+            -o-transition: all 0s;
+            transition: all 0s;
+        }
+        
+        .switch2__input:checked~.switch2__content:after {
+            background-color: #0078D7;
+            width: 100%;
+        }
+        
+        .switch3__label {
+            width: 37px;
+            position: relative;
+            display: inline-block;
+            padding-top: 3px;
+        }
+        
+        .switch3__content {
+            display: block;
+            cursor: pointer;
+            position: relative;
+            border-radius: 7px;
+            height: 14px;
+            background-color: rgba(34, 31, 31, .26);
+            -webkit-transition: all .1s .4s;
+            -moz-transition: all .1s .4s;
+            -ms-transition: all .1s .4s;
+            -o-transition: all .1s .4s;
+            transition: all .1s .4s;
+            overflow: hidden;
+        }
+        
+        .switch3__content:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 7px;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+        
+        .switch3__input {
+            display: none;
+        }
+        
+        .switch3__circle {
+            display: block;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background-color: #F1F1F1;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+            -webkit-box-shadow: 0 2px 2px #ccc;
+            box-shadow: 0 2px 2px #ccc;
+        }
+        
+        .switch3__input:checked~.switch3__circle {
+            left: 18px;
+            background-color: #009688;
+        }
+        
+        .switch3__input:checked~.switch3__content {
+            border-color: transparent;
+            -webkit-transition: all 0s;
+            -moz-transition: all 0s;
+            -ms-transition: all 0s;
+            -o-transition: all 0s;
+            transition: all 0s;
+        }
+        
+        .switch3__input:checked~.switch3__content:after {
+            background-color: rgba(0, 150, 136, .5);
+            width: 100%;
+        }
+        
+        .title-box3 {
+            margin: 2px;
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            letter-spacing: .3px;
+            width: 50%;
+            box-shadow: 0 1.9px 2.5px rgba(0, 0, 0, 0.057), 0 5px 6.1px rgba(0, 0, 0, 0.076), 0 10.1px 11.4px rgba(0, 0, 0, 0.086), 0 19.2px 19.8px rgba(0, 0, 0, 0.092), 0 38.4px 34.8px rgba(0, 0, 0, 0.1), 0 101px 74px rgba(0, 0, 0, 0.13);
+        }
+        
+        .title-box3-title {
+            color: #fff;
+            font-weight: bold;
+            background-color: #2196f3;
+            padding: 4px 6px;
+            text-align: center;
+        }
+        
+        .title-box3 p {
+            margin: 0;
+            padding: 1em;
+        }
+        
+        #cards {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        #blocks {
+            padding: 5px;
+            font-size: 16px;
+            background-color: antiquewhite;
+        }
+        
+        .count {
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        #options:hover {
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="icon32.png" />
+        <span>Comment Blocker</span>
+        <div id="options">
+            <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1; margin-right: 5px;" xml:space="preserve">
+                <style type="text/css">
+                    .st0 {
+                        fill: #4B4B4B;
+                    }
+                </style>
+                <g>
+                    <path class="st0" d="M104.426,139.813l83.563,83.781c14.344-13.766,26.781-25.703,36.109-34.672l-84.297-84.5l-10.313-45.719
+                    L54.27,12.985L33.629,33.642L12.988,54.282l45.719,75.219L104.426,139.813z"
+                        style="fill: rgb(75, 75, 75);"></path>
+                    <path class="st0" d="M358.363,276.298L481.926,399.47c22.781,22.766,22.781,59.688,0,82.469c-22.781,22.766-59.688,22.766-82.469,0
+                    L275.895,358.767L358.363,276.298z" style="fill: rgb(75, 75, 75);"></path>
+                    <path class="st0"
+                        d="M459.957,203.407c42.547-38.609,49.656-82.484,40.141-119.484c-0.281-2.938-0.984-5.406-3.547-7.25
+                    l-8.563-7.016c-1.484-1.391-3.484-2.063-5.484-1.875c-2.016,0.203-3.844,1.234-5.031,2.875l-49.25,64.031
+                    c-1.375,1.891-3.594,2.969-5.922,2.891l-17.875,1.313c-1.531-0.047-3.016-0.594-4.219-1.563l-34.531-29.266
+                    c-1.406-1.141-2.328-2.766-2.563-4.563l-2.141-16.188c-0.25-1.781,0.203-3.594,1.266-5.063l46.109-62.641
+                    c2.094-2.875,1.688-6.859-0.906-9.281l-11.188-8.75c-2.188-2.031-4.672-1.75-8.063-1.094
+                    c-31.844,6.281-86.219,37.125-100.016,79.75c-12.156,37.516-7.922,63.969-7.922,63.969c0,21.141-6.953,41.516-15.5,50.063
+                    L24.504,424.923c-0.469,0.422-0.922,0.859-1.375,1.313c-19.844,19.844-19.813,52.047-0.641,71.219s51.859,19.672,71.703-0.172
+                    c0.922-0.922,1.813-1.875,2.641-2.859l231.672-250.438C357.004,218.61,413.426,245.642,459.957,203.407z"
+                        style="fill: rgb(75, 75, 75);"></path>
+                </g>
+            </svg>
+        </div>
+
+
+
+    </header>
+    <main>
+        <div id="enable">
+            <span id="message">Comment Blockerが有効です</span>
+            <div class="switch">
+                <label class="switch__label">
+                    <input type="checkbox" class="switch__input" id="is_enabled"/>
+                    <span class="switch__content"></span>
+                    <span class="switch__circle"></span>
+                </label>
+            </div>
+        </div>
+        <div id="blocks">
+            <span>ブロックした数</span>
+            <div id="cards">
+                <div class="title-box3">
+                    <div class="title-box3-title">このページ中</div>
+                    <p id="thispage" class="count">10</p>
+                </div>
+                <div class="title-box3">
+                    <div class="title-box3-title">合計</div>
+                    <p id="total" class="count">1000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+body {
+    margin: 0px;
+    background-color: f3f3f3;
+}
+
+#main_container {
+    padding: 20px;
+    width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: #ffe5b9;
+    padding: 6px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#title {
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+
+/*---------- vertical tab nav */
+
+#vertical_tab_nav {
+    display: block;
+    width: 100%;
+}
+
+#content_titles {
+    display: block;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    overflow: hidden;
+    width: 20%;
+    border-radius: 10px 0 0 10px;
+    background: #555;
+}
+
+.content_title {
+    border-bottom: 1px solid #000;
+    margin-bottom: 1px;
+    text-align: left;
+    padding: 0px;
+}
+
+.content_title:last-child {
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+
+.content_title a {
+    display: block;
+    font-size: 14pt;
+    color: #fff;
+    text-decoration: none;
+    padding: 7%;
+    background: #57cac9;
+    background: -webkit-linear-gradient(top, #444, #333);
+    background: -moz-linear-gradient(top, #444, #333);
+}
+
+.content_title a.selected {
+    background: #fff;
+    color: #000;
+    border: 1px solid #cdcdcd;
+    border-right: none;
+    position: relative;
+}
+
+#article_container {
+    display: block;
+    float: left;
+    background: #fff;
+    background: #fff;
+    width: 64%;
+    min-height: 500px;
+    padding: 10px 3% 3% 3%;
+    border: 1px solid #cdcdcd;
+    border-radius: 0 10px 10px 10px;
+    margin-left: -1px;
+}
+
+.page {
+    display: none;
+    margin: 0px;
+}
+
+.page p {
+    margin: 0px 0px 20px 0px;
+}
+
+.listbox {
+    width: 80%;
+    margin: 0px;
+}
+
+.add_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.list_input {
+    margin: 0px;
+    width: 100%;
+    font-size: 24px;
+}
+
+.btn-square-so-pop {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #d27d00;
+}
+
+.btn-square-so-pop:hover {
+    cursor: pointer;
+}
+
+.btn-square-so-pop:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.item_list {
+    margin: -1px 0px 0px 0px;
+    padding: 0px;
+    list-style: none;
+    max-height: 500px;
+    min-height: 500px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+
+.item {
+    margin: 0px;
+    height: 40px;
+    border: 1px solid black;
+    border-top: none;
+    border-left: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.icons {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.remove {
+    margin: 4px;
+}
+
+.remove:hover {
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.user_name {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+}
+
+.word {
+    font-size: 16px;
+    color: black;
+}
+
+.user_name:hover {
+    text-decoration: underline;
+    text-decoration-color: blue;
+    color: blue;
+}
+
+.user_icon {
+    margin: 3px;
+}
+
+.ECM_CheckboxInput {
+    padding: 12px 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ECM_CheckboxInput-Input {
+    margin: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.ECM_CheckboxInput:hover>.ECM_CheckboxInput-DummyInput {
+    background: #CCCCCC;
+}
+
+.ECM_CheckboxInput-Input:focus+.ECM_CheckboxInput-DummyInput {
+    background: #CCCCCC;
+}
+
+.ECM_CheckboxInput-Input:checked+.ECM_CheckboxInput-DummyInput {
+    background: #555555;
+}
+
+.ECM_CheckboxInput-Input:checked+.ECM_CheckboxInput-DummyInput::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 35%;
+    height: 2px;
+    transform: translate(-5px, 6px) rotateZ(-135deg);
+    transform-origin: 1px 1px;
+    background: #FFFFFF;
+}
+
+.ECM_CheckboxInput-Input:checked+.ECM_CheckboxInput-DummyInput::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 2px;
+    transform: translate(-5px, 6px) rotateZ(-45deg);
+    transform-origin: 1px 1px;
+    background: #FFFFFF;
+}
+
+.ECM_CheckboxInput-DummyInput {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: #F5F5F5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4) inset;
+}
+
+.ECM_CheckboxInput-LabelText {
+    margin-left: 12px;
+    display: block;
+    font-size: 18px;
+}

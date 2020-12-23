@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "Comment Blocker",
+    "author": "Pavaux 1963",
+    "version": "1.0.0",
+    "description": "YouTubeの特定のコメントをブロックします。",
+    "icons": {
+        "32": "icon32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "script.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_icon": {
+            "19": "icon19.png"
+        },
+        "default_title": "Comment Blocker",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "permissions": [
+        "contextMenus",
+        "declarativeContent",
+        "tabs",
+        "storage",
+        "unlimitedStorage",
+        "https://www.youtube.com/*"
+    ],
+    "options_page": "options.html"
+}
